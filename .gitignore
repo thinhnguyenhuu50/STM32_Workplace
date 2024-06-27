@@ -1,0 +1,11 @@
+#Logs
+logs
+*.log
+
+#Executed files
+Debug
+Release
+*.launch
+
+#Workspace folder
+.metadata
