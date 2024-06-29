@@ -176,13 +176,24 @@ void system_init() {
 }
 
 void TestUart() {
-	if (button_count[12] == 1) {
+	if (button_count[0] == 1) {
 		uart_rs232_send_num(ds3231_hours);
 		uart_rs232_send_string((void*)":");
 		uart_rs232_send_num(ds3231_min);
 		uart_rs232_send_string((void*)":");
 		uart_rs232_send_num(ds3231_sec);
 		uart_rs232_send_string((void*)"\n");
+	}
+	if (button_count[1] == 1) {
+		uart_rs232_send_num(ds3231_year);
+		uart_rs232_send_string((void*)":");
+		uart_rs232_send_num(ds3231_month);
+		uart_rs232_send_string((void*)":");
+		uart_rs232_send_num(ds3231_date);
+		uart_rs232_send_string((void*)"\n");
+	}
+	if (button_count[2] == 1) {
+		uart_rs232_send_string((void*)"Hello world!\r\n");
 	}
 }
 /* USER CODE END 4 */

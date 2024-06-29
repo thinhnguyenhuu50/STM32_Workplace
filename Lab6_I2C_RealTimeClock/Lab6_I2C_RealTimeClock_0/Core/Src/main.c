@@ -103,7 +103,7 @@ int main(void) {
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	lcd_clear(BLACK);
-	UpdateTime();
+	//UpdateTime();
 
 	while (1) {
 		while (!timer2_flag)
@@ -177,13 +177,13 @@ void system_init() {
 }
 
 void UpdateTime() {
-	ds3231_write(ADDRESS_YEAR, 23);
-	ds3231_write(ADDRESS_MONTH, 10);
-	ds3231_write(ADDRESS_DATE, 20);
-	ds3231_write(ADDRESS_DAY, 6);
-	ds3231_write(ADDRESS_HOUR, 20);
-	ds3231_write(ADDRESS_MIN, 11);
-	ds3231_write(ADDRESS_SEC, 23);
+	ds3231_write(ADDRESS_YEAR, 24);
+	ds3231_write(ADDRESS_MONTH, 6);
+	ds3231_write(ADDRESS_DATE, 29);
+	ds3231_write(ADDRESS_DAY, 7);
+	ds3231_write(ADDRESS_HOUR, 3);
+	ds3231_write(ADDRESS_MIN, 19);
+	ds3231_write(ADDRESS_SEC, 59);
 }
 
 void DisplayTime() {

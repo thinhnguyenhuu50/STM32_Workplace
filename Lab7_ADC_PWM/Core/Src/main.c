@@ -217,6 +217,14 @@ void TestADC() {
 		lcd_show_float_num(130, 120, sensor_get_current(), 4, RED, BLACK, 16);
 		lcd_show_string(10, 140, "Light:", RED, BLACK, 16, 0);
 		lcd_show_int_num(130, 140, sensor_get_light(), 4, RED, BLACK, 16);
+		if (sensor_get_light() > 2000) {
+			HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 1);
+			HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
+		}
+		else {
+			HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
+			HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 0);
+		}
 		lcd_show_string(10, 160, "Potentiometer:", RED, BLACK, 16, 0);
 		lcd_show_int_num(130, 160, sensor_get_potentiometer(), 4, RED, BLACK,
 				16);
@@ -228,7 +236,7 @@ void TestADC() {
 
 void TestBuzzer() {
 	if (IsButtonUp()) {
-		buzzer_set_volume(50);
+		buzzer_set_volume(99);
 	}
 
 	if (IsButtonDown()) {
