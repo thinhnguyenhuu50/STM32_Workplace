@@ -228,15 +228,30 @@ uint16_t CheckPassword() {
 }
 
 void UnlockDoor() {
-	if (flagOpen == 0) {
-		lcd_show_picture(80, 90, 77, 130, image_door_open_1);
-		lcd_show_picture(80, 90, 77, 130, image_door_open_2);
-		lcd_show_picture(80, 90, 80, 135, image_door_open_3);
-		lcd_show_picture(80, 90, 90, 138, image_door_open_4);
-		lcd_show_picture(80, 90, 98, 138, image_door_open_5);
-		flagOpen = 1;
-	}
-	lcd_show_picture(80, 90, 112, 138, image_door_open_6);
+	static uint16_t timeDelay_local = 1;
+	timeDelay_local = (timeDelay_local + 1) % 99;
+//	if (flagOpen == 0) {
+		if (timeDelay_local == 5){
+//			lcd_fill(80, 90, 170, 230, WHITE);
+			lcd_show_picture(80, 100, 77, 130, image_door_open_1);//90
+		}
+		if (timeDelay_local == 10){
+//			lcd_fill(80, 90, 170, 230, WHITE);
+			lcd_show_picture(80, 100, 77, 130, image_door_open_2);
+		}
+		if (timeDelay_local == 15){
+			lcd_show_picture(80, 100, 80, 135, image_door_open_3);//80, 135,
+		}
+		if (timeDelay_local == 20){
+			lcd_show_picture(80, 100, 90, 138, image_door_open_4);//90, 138,
+		}
+		if (timeDelay_local == 25){
+			lcd_show_picture(80, 100, 98, 138, image_door_open_5);//98, 138,
+		}
+//		flagOpen = 1;
+//	}
+	if (timeDelay_local == 30)
+	lcd_show_picture(80, 100, 112, 138, image_door_open_6);//112, 138,
 }
 
 void LockDoor() {
@@ -319,6 +334,7 @@ void AppPasswordDoor() {
 		if (timeDelay >= 100) {
 			statusPassword = LOCK_DOOR;
 			lcd_fill(20, 20, 220, 300, WHITE);
+			flagOpen = 0;
 		}
 		break;
 

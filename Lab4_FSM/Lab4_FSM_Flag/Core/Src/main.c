@@ -252,9 +252,9 @@ void FlagStopMoving() {
 void BaiTapFlag() {
 	switch (statusFlag) {
 	case INIT_SYSTEM:
-		lcd_clear(0x875c);//0x875c
-		lcd_fill(0, 0, 240, 20, BLUE);//blue
-		lcd_show_picture(80, 100, 90, 209, gImage_c_flag);// 80 100
+		lcd_clear(0x875c);
+		lcd_fill(0, 0, 240, 20, BLUE);
+		lcd_show_picture(80, 100, 90, 209, gImage_c_flag);
 
 		statusFlag = BOTTOM_POSITION;
 		break;
@@ -291,6 +291,10 @@ void BaiTapFlag() {
 
 		if (IsBottomSwitch()) {
 			statusFlag = BOTTOM_POSITION;
+		}
+
+		if (IsButtonUp()) {
+			statusFlag = MOVING_UP;
 		}
 
 		if (IsButtonStop()) {
